@@ -47,6 +47,7 @@
             this.cmbCity = new System.Windows.Forms.ComboBox();
             this.rdbActive = new System.Windows.Forms.RadioButton();
             this.rdbPassive = new System.Windows.Forms.RadioButton();
+            this.btnProcedure = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -124,10 +125,11 @@
             // 
             this.btnList.Location = new System.Drawing.Point(145, 226);
             this.btnList.Name = "btnList";
-            this.btnList.Size = new System.Drawing.Size(274, 29);
+            this.btnList.Size = new System.Drawing.Size(139, 29);
             this.btnList.TabIndex = 16;
             this.btnList.Text = "Listele";
             this.btnList.UseVisualStyleBackColor = true;
+            this.btnList.Click += new System.EventHandler(this.btnList_Click);
             // 
             // dataGridView1
             // 
@@ -224,12 +226,23 @@
             this.rdbPassive.Text = "Pasif";
             this.rdbPassive.UseVisualStyleBackColor = true;
             // 
+            // btnProcedure
+            // 
+            this.btnProcedure.Location = new System.Drawing.Point(280, 226);
+            this.btnProcedure.Name = "btnProcedure";
+            this.btnProcedure.Size = new System.Drawing.Size(139, 29);
+            this.btnProcedure.TabIndex = 35;
+            this.btnProcedure.Text = "Prosedür";
+            this.btnProcedure.UseVisualStyleBackColor = true;
+            this.btnProcedure.Click += new System.EventHandler(this.btnProcedure_Click);
+            // 
             // FrmCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(1300, 407);
+            this.Controls.Add(this.btnProcedure);
             this.Controls.Add(this.rdbPassive);
             this.Controls.Add(this.rdbActive);
             this.Controls.Add(this.cmbCity);
@@ -278,5 +291,6 @@
         private System.Windows.Forms.ComboBox cmbCity;
         private System.Windows.Forms.RadioButton rdbActive;
         private System.Windows.Forms.RadioButton rdbPassive;
+        private System.Windows.Forms.Button btnProcedure;
     }
 }
