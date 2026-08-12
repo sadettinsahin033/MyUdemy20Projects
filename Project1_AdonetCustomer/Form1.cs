@@ -17,13 +17,6 @@ namespace Project1_AdonetCustomer
         {
             InitializeComponent();
         }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-
-        }
-
-       
         SqlConnection sqlConnection = new SqlConnection("Server=localhost;initial catalog=DbCustomer;integrated security=true");
         private void btnList_Click(object sender, EventArgs e)
         {
@@ -45,8 +38,27 @@ namespace Project1_AdonetCustomer
             sqlConnection.Close();
             MessageBox.Show("Şehir Başarılı Bir Şekilde Eklendi");
         }
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            sqlConnection.Open();
+            SqlCommand command = new SqlCommand("Delete From TblCity Where CityId=@cityId", sqlConnection);
+            command.Parameters.AddWithValue("@cityId", txtCityId.Text);
+            command.ExecuteNonQuery();
+            sqlConnection.Close();
+            MessageBox.Show("Şehir Başarılı Bir Şekilde Silindi","Uyarı!",MessageBoxButtons.OK,MessageBoxIcon.Information );
 
+        }
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            sqlConnection.Open();
+            SqlCommand command = new SqlCommand("Update TblCity Set CityName=@cityName, CityCountry=@cityCountry where CityId=@cityId", sqlConnection);
+            command.Parameters.AddWithValue("@cityName", txtCityName.Text);
+            command.Parameters.AddWithValue("@cityCountry", txtCityCountry.Text);
+            command.Parameters.AddWithValue("@cityId", txtCityId.Text);
+            command.ExecuteNonQuery();
+            sqlConnection.Close();
+            MessageBox.Show("Şehir Başarılı Bir Şekilde Güncellendi", "Uyarı!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-
+        }
     }
 }
