@@ -44,6 +44,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.cmbProductCategory = new System.Windows.Forms.ComboBox();
+            this.btnProductListWithCategory = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,7 +52,7 @@
             // 
             this.btnList.Location = new System.Drawing.Point(134, 177);
             this.btnList.Name = "btnList";
-            this.btnList.Size = new System.Drawing.Size(274, 29);
+            this.btnList.Size = new System.Drawing.Size(138, 29);
             this.btnList.TabIndex = 40;
             this.btnList.Text = "Listele";
             this.btnList.UseVisualStyleBackColor = true;
@@ -65,6 +66,7 @@
             this.btnSearch.TabIndex = 39;
             this.btnSearch.Text = "Ara";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnUpdate
             // 
@@ -193,11 +195,22 @@
             this.cmbProductCategory.Size = new System.Drawing.Size(274, 28);
             this.cmbProductCategory.TabIndex = 47;
             // 
+            // btnProductListWithCategory
+            // 
+            this.btnProductListWithCategory.Location = new System.Drawing.Point(270, 177);
+            this.btnProductListWithCategory.Name = "btnProductListWithCategory";
+            this.btnProductListWithCategory.Size = new System.Drawing.Size(138, 29);
+            this.btnProductListWithCategory.TabIndex = 48;
+            this.btnProductListWithCategory.Text = "Listele";
+            this.btnProductListWithCategory.UseVisualStyleBackColor = true;
+            this.btnProductListWithCategory.Click += new System.EventHandler(this.btnProductListWithCategory_Click);
+            // 
             // FrmProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1122, 366);
+            this.Controls.Add(this.btnProductListWithCategory);
             this.Controls.Add(this.cmbProductCategory);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtProductStock);
@@ -216,6 +229,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FrmProduct";
             this.Text = "FrmProduct";
+            this.Load += new System.EventHandler(this.FrmProduct_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -240,5 +254,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cmbProductCategory;
+        private System.Windows.Forms.Button btnProductListWithCategory;
     }
 }
