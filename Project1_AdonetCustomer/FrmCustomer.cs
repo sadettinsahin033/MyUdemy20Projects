@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
@@ -72,6 +73,50 @@ namespace Project1_AdonetCustomer
             command.ExecuteNonQuery();
             sqlConnection.Close();
             MessageBox.Show("Müşteri Başarı İle Eklendi");
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            sqlConnection.Open();
+            SqlCommand command = new SqlCommand("Delete From TblCustomer Where CustomerId=@customerId", sqlConnection);
+            command.Parameters.AddWithValue("@customerId", txtCustomerId.Text);
+            command.ExecuteNonQuery();
+            sqlConnection.Close();
+            MessageBox.Show("Müşteri Başarılı Bir Şekilde Silindi", "Uyarı!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            sqlConnection.Open();
+            SqlCommand command = new SqlCommand("Update TblCustomer Set CustomerName=@customerName,CustomerSurname=@customerSurname,CustomerCity=@customerCity,CustomerBalance=@customerBalance,CustomerStatus=@customerStatus where CustomerId=@customerId", sqlConnection);
+            command.Parameters.AddWithValue("@customerName", txtCustomerName.Text);
+            command.Parameters.AddWithValue("@customerSurname", txtCustomerSurname.Text);
+            command.Parameters.AddWithValue("@customerCity", cmbCity.SelectedValue);
+            command.Parameters.AddWithValue("@customerBalance", txtBalance.Text);
+            command.Parameters.AddWithValue("@customerId", txtCustomerId.Text);
+            if (rdbActive.Checked)
+            {
+                command.Parameters.AddWithValue("@customerStatus", true);
+            }
+            if (rdbPassive.Checked)
+            {
+                command.Parameters.AddWithValue("@customerStatus", false);
+            }
+            command.ExecuteNonQuery();
+            sqlConnection.Close();
+            MessageBox.Show("Müşteri Başarı İle Güncellendi");
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            sqlConnection.Open();
+            SqlCommand command = new SqlCommand("Select CustomerId,CustomerName,CustomerSurname,CustomerBalance,CustomerStatus,CityName From TblCustomer Inner Join TblCity On TblCity.CityId=TblCustomer.CustomerCity where CustomerName=@customerName", sqlConnection);
+            command.Parameters.AddWithValue("@customerName", txtCustomerName.Text);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+            dataGridView1.DataSource = dataTable;
+            sqlConnection.Close();
         }
     }
 }
