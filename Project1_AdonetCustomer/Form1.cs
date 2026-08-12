@@ -18,20 +18,15 @@ namespace Project1_AdonetCustomer
             InitializeComponent();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnDelete_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
+       
+        SqlConnection sqlConnection = new SqlConnection("Server=localhost;initial catalog=DbCustomer;integrated security=true");
         private void btnList_Click(object sender, EventArgs e)
         {
-            SqlConnection sqlConnection = new SqlConnection("Server=localhost;initial catalog=DbCustomer;integrated security=true");
-            
             sqlConnection.Open();
             SqlCommand command = new SqlCommand("Select * From TblCity", sqlConnection);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -40,5 +35,18 @@ namespace Project1_AdonetCustomer
             dataGridView1.DataSource = dataTable;
             sqlConnection.Close();
         }
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            sqlConnection.Open();
+            SqlCommand command = new SqlCommand("insert into TblCity (CityName,CityCountry) values (@cityName,@cityCountry)", sqlConnection);
+            command.Parameters.AddWithValue("@cityName", txtCityName.Text);
+            command.Parameters.AddWithValue("@cityCountry", txtCityCountry.Text);
+            command.ExecuteNonQuery();
+            sqlConnection.Close();
+            MessageBox.Show("Şehir Başarılı Bir Şekilde Eklendi");
+        }
+
+
+
     }
 }
