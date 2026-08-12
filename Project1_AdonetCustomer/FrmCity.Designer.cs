@@ -1,6 +1,6 @@
 ﻿namespace Project1_AdonetCustomer
 {
-    partial class Form1
+    partial class FrmCity
     {
         /// <summary>
         ///Gerekli tasarımcı değişkeni.
@@ -165,6 +165,7 @@
             this.btnSearch.TabIndex = 12;
             this.btnSearch.Text = "Ara";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // Form1
             // 
